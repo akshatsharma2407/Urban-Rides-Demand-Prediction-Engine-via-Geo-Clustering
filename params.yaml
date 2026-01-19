@@ -1,0 +1,21 @@
+data_ingestion:
+  min_latitude: 40.60
+  max_latitude: 40.85
+  min_longitude: -74.05
+  max_longitude: -73.70
+
+  min_fare: 0.50 
+  max_fare: 125 
+
+  min_distance: 0.25 
+  max_distance: 27
+
+build_features:
+  n_clusters: 30
+  n_init: 10
+  random_state: 42
+
+XGB:
+  n_estimators: 439
+  learning_rate: 0.050589027665044806
+  max_depth: 10
