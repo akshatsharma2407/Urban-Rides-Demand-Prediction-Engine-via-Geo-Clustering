@@ -1,0 +1,32 @@
+stages:
+  data_ingestion:
+    cmd: python src/data/data_ingestion.py
+    deps:
+    - src/data/data_ingestion.py
+    - data/raw
+  build_features:
+    cmd: python src/features/build_features.py
+    deps:
+    - data/interim/df_without_outliers.csv
+    - src/features/build_features.py
+    outs:
+    - models/scaler.joblib
+    - models/mbkmeans.joblib
+  train_model:
+    cmd: python src/models/train_model.py
+    deps:
+    - data/processed/train.csv
+    - src/models/train_model.py
+    outs:
+    - models/model.joblib
+  evaluate_model:
+    cmd: python src/models/evaluate_model.py
+    deps:
+    - models/model.joblib
+    - src/models/evaluate_model.py
+    outs:
+    - reports/run_info.json
+  register_model:
+    cmd: python src/models/register_model.py
+    deps:
+    - reports/run_info.json
