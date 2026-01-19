@@ -213,7 +213,7 @@ elif map_type == "Complete NYC Map" or map_type ==  'Only for Neighborhood Regio
         else:
             st.write('taking a random location on map to simulate like fetching the live location!')
             few_cordinate = [[40.730610, -73.907042],[40.89150152352015, -73.9140293789116], [40.78733351539776, -73.95962405788946], [40.64191315310556, -73.76557878639855], [40.82213475260872, -73.98320269773465]]
-            curr_cordinate = few_cordinate[random.randint(0, len(few_cordinate))]
+            curr_cordinate = few_cordinate[random.randint(0, len(few_cordinate)-1)]
             distances = {}
             for key,val in cluster_centroids.items():
                 distance = haversine_distance(curr_cordinate[0], curr_cordinate[1], val[1], val[0])
